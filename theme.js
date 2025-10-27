@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const inner = document.createElement("div");
         inner.classList.add("inner");
-        inner.textContent = ".";
+        inner.textContent = "."; // snowflake character
 
         snowflake.appendChild(inner);
         snowContainer.appendChild(snowflake);

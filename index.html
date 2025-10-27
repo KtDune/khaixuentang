@@ -71,11 +71,55 @@
         </span>
 
         <span class="flex flex-col gap-6">
+            <button id="groupBox" type="button"
+                class="text-[#E0E0E0] dark:text-[#121212] hover:scale-110 transition-transform max-sm:flex max-sm:items-center max-sm:gap-6">
+                <span class="material-icons">groups</span>
+                <p class="text-xs">Credits</p>
+            </button>
+
             <button id="theme-toggle" type="button"
                 class="text-[#E0E0E0] dark:text-[#121212] hover:scale-110 transition-transform max-sm:flex max-sm:items-center max-sm:gap-6">
                 <span id="theme-toggle-light-icon" class="material-icons text-xl w-6 h-6 cursor-pointer">wb_sunny</span>
                 <p class="text-xs">Theme</p>
             </button>
+
+            <dialog id="groupModal"
+                class="rounded-xl p-6 bg-[#444444] dark:bg-[#E0E0E0] text-[#E0E0E0] dark:text-[#121212] shadow-xl text-justify">
+                <h2 class="text-2xl font-bold mb-4">Credits</h2>
+
+                <p class="mb-4 mt-16">This website is inspired by these websites / resources:</p>
+
+                <a href="https://botpa.vercel.app/" class="text-[#E0E0E0] dark:text-[#121212] underline">Alejandro's
+                    portfolio:</a>
+                <p class="mb-6 italic text-[#D0D0D0] dark:text-[#444444] text-sm">For the base layout of this website.</p>
+
+                <a href="https://www.apple.com/iphone-air/" class="text-[#E0E0E0] dark:text-[#121212] underline">Apple's
+                    iPhone Air product website:</a>
+                <p class="mb-6 italic text-[#D0D0D0] dark:text-[#444444] text-sm">For the smooth product showcase transition and
+                    design inspiration.</p>
+
+                <a href="https://pajasevi.github.io/CSSnowflakes/"
+                    class="text-[#E0E0E0] dark:text-[#121212] underline">CSS Snowflakes:</a>
+                <p class="mb-6 italic text-[#D0D0D0] dark:text-[#444444] text-sm">For the animated falling snowflake background
+                    effect.</p>
+
+                <a href="https://www.vev.design/blog/dark-mode-website-color-palette/"
+                    class="text-[#E0E0E0] dark:text-[#121212] underline">6 Dark Mode Website Color Palette Ideas:</a>
+                <p class="mb-6 italic text-[#D0D0D0] dark:text-[#444444] text-sm">For the dark mode color palette and aesthetic
+                    inspiration.</p>
+
+
+                <p class="mb-6">...and many other websites that I came across.</p>
+
+                <p class="mb-16">This website is built by me and, of course, <strong>ChatGPT</strong>.</p>
+
+                <!-- Close button -->
+                <div class="text-right">
+                    <button id="closeModal" class="px-4 py-2 bg-[#888888] dark:bg-[#121212] text-[#E0E0E0] transition">
+                        Close
+                    </button>
+                </div>
+            </dialog>
         </span>
     </aside>
 
@@ -111,7 +155,7 @@
         <section class="px- mt-60 max-w-4xl mx-auto flex items-center" id="about-section">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-8">
                 <!-- Left Side: Description -->
-                <div class="sm:flex-1 text-justify overflow-y-auto mx-8 sm:mx-0">
+                <div class="sm:flex-1 text-justify overflow-y-auto mx-8 sm:mx-0 sm:ms-4">
                     <h2 class="text-3xl font-bold mb-6">About Me</h2>
                     <p class="text-[#E0E0E0] dark:text-[#121212] mb-6">
                         Hello perple wandering to my portfolio! I'm Khai Xuen Tang, 4th year Software Design in AI for
@@ -142,7 +186,7 @@
                 </div>
 
                 <!-- Right Side: Rounded Border Box -->
-                <div class="sm:flex-1 border-2 border-[#E0E0E0] dark:border-[#121212] rounded-xl p-5">
+                <div class="sm:flex-1 border-2 border-[#E0E0E0] dark:border-[#121212] rounded-xl p-5 sm:me-4">
                     <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                         alt="Profile Picture" class="w-full h-[50vh] rounded-xl object-cover">
                 </div>
@@ -160,6 +204,20 @@
             <!-- Projects Grid -->
             <div id="projects-container" class="mt-12 grid grid-cols-1 gap-4 min-[930px]:grid-cols-3"></div>
             <div id="pagination" class="flex justify-center mt-6"></div>
+
+            <dialog id="project-modal"
+                class="rounded-xl p-6 max-w-2xl w-[90%] bg-[#444444] dark:bg-[#E0E0E0] text-[#E0E0E0] dark:text-[#121212] shadow-xl">
+                <img id="modal-img" src="" alt="Project Image" class="rounded-xl w-full h-64 object-cover mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold mb-2"></h3>
+                <div class="max-h-32 overflow-y-auto">
+                    <p id="modal-desc" class="text-sm leading-relaxed"></p>
+                </div>
+
+                <button id="closeBtn"
+                    class="block ms-auto px-4 py-2 bg-[#888888] text-[#E0E0E0] dark:bg-[#121212] dark:text-[#E0E0E0] mt-8 cursor-pointer">
+                    Close
+                </button>
+            </dialog>
         </section>
 
         <!-- Skills (Spider Graph) Section -->

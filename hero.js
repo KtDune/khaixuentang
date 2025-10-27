@@ -43,6 +43,8 @@ function erase() {
 document.addEventListener('DOMContentLoaded', () => {
   erase()
 
+  const overlay = document.getElementById('overlay');
+
   document.getElementById('scroll-to-next').addEventListener('click', function () {
     document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
   });
@@ -154,5 +156,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+  });
+
+  const groupBox = document.getElementById('groupBox');
+  const groupModal = document.getElementById('groupModal');
+  const closeModalBtn = document.getElementById('closeModal');
+
+  // Open modal on click
+  groupBox.addEventListener('click', () => {
+    groupModal.showModal();
+    overlay.classList.remove("hidden");
+  });
+
+  // Close modal on button click
+  closeModalBtn.addEventListener('click', () => {
+    groupModal.close();
+    overlay.classList.add("hidden");
   });
 })
