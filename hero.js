@@ -50,6 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('aside a[href="#project-title"]').addEventListener('click', function (e) {
     e.preventDefault();
     document.getElementById('project-title').scrollIntoView({ behavior: 'smooth' });
+    if (!overlay.classList.contains("hidden")) {
+      overlay.classList.toggle("hidden");
+    }
+    if (!sidebar.classList.contains("max-sm:-translate-x-full")) {
+      sidebar.classList.toggle("max-sm:-translate-x-full");
+    }
   });
 
   document.querySelector('aside a[href="#skill-section"]').addEventListener('click', function (e) {
@@ -58,6 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rect = skillsSection.getBoundingClientRect();
     const scrollY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
     window.scrollTo({ top: scrollY, behavior: 'smooth' });
+    if (!overlay.classList.contains("hidden")) {
+      overlay.classList.toggle("hidden");
+    }
+    if (!sidebar.classList.contains("max-sm:-translate-x-full")) {
+      sidebar.classList.toggle("max-sm:-translate-x-full");
+    }
   });
 
   document.querySelector('aside a[href="#about-section"]').addEventListener('click', function (e) {
@@ -66,6 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rect = skillsSection.getBoundingClientRect();
     const scrollY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
     window.scrollTo({ top: scrollY, behavior: 'smooth' });
+    if (!overlay.classList.contains("hidden")) {
+      overlay.classList.toggle("hidden");
+    }
+    if (!sidebar.classList.contains("max-sm:-translate-x-full")) {
+      sidebar.classList.toggle("max-sm:-translate-x-full");
+    }
   });
 
   document.querySelector('aside a[href="#contact-section"]').addEventListener('click', function (e) {
@@ -74,6 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rect = skillsSection.getBoundingClientRect();
     const scrollY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
     window.scrollTo({ top: scrollY, behavior: 'smooth' });
+    if (!overlay.classList.contains("hidden")) {
+      overlay.classList.toggle("hidden");
+    }
+    if (!sidebar.classList.contains("max-sm:-translate-x-full")) {
+      sidebar.classList.toggle("max-sm:-translate-x-full");
+    }
   });
 
   document.querySelector('aside a[href="#hero-section"]').addEventListener('click', function (e) {
@@ -82,6 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rect = skillsSection.getBoundingClientRect();
     const scrollY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
     window.scrollTo({ top: scrollY, behavior: 'smooth' });
+    if (!overlay.classList.contains("hidden")) {
+      overlay.classList.toggle("hidden");
+    }
+    if (!sidebar.classList.contains("max-sm:-translate-x-full")) {
+      sidebar.classList.toggle("max-sm:-translate-x-full");
+    }
   });
 
   // Select elements

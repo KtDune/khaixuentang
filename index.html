@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
     <title>My portfolio website</title>
 </head>
 
@@ -17,11 +18,11 @@
 
     <!-- Sidebar (Aside) -->
     <aside id="sidebar" class="max-sm:fixed max-sm:top-0 max-sm:left-0 right-0 bottom-0
-         max-sm:h-screen max-sm:w-48 max-sm:bg-[#444444] max-sm:text-[#E0E0E0] max-sm:dark:bg-[#E0E0E0] max-sm:dark:text-[#121212]
+         max-sm:w-48 max-sm:bg-[#444444] max-sm:text-[#E0E0E0] max-sm:dark:bg-[#E0E0E0] max-sm:dark:text-[#121212]
         max-sm:-translate-x-full max-sm:z-10
 
          flex flex-col items-center justify-between text-center h-screen
-         py-32 space-y-6 sticky top-0">
+         py-[12vh] space-y-6 sticky top-0">
 
         <span class="flex flex-col gap-6">
             <a href="#hero-section"
@@ -78,19 +79,20 @@
         </span>
     </aside>
 
-    <!-- Sidebar for small screens -->
-
-
     <!-- Main Content -->
     <main class="sm:col-span-1">
+
+        <!-- Snowflakes Background -->
+        <div class="snowflakes absolute z-[-10]" aria-hidden="true"></div>
+
         <!-- Hamburger Menu for small screens -->
         <button id="menu-toggle"
-            class="fixed top-0 left-0 z-20 sm:hidden p-2 rounded text-[#E0E0E0] dark:text-[#121212]">
+            class="fixed top-5 left-5 z-20 sm:hidden p-2 rounded text-[#E0E0E0] dark:text-[#121212]">
             <span class="material-icons text-2xl cursor-pointer select-none">menu</span>
         </button>
 
         <!-- Hero Section -->
-        <section id="hero-section" class="h-screen flex flex-col justify-center items-center">
+        <section id="hero-section" class="h-screen min-h-screen flex flex-col justify-center items-center">
 
             <div class="flex flex-col justify-center items-center">
                 <p class="text-[1rem] me-auto">Hi, my name is</p>
@@ -98,20 +100,20 @@
                 <p id="typing" class="text-[1rem] ms-auto h-[24px]"></p>
             </div>
 
-            <span>
+            <div>
                 <a id="scroll-to-next"
                     class="material-icons animate-bounce text-4xl absolute bottom-10 cursor-pointer select-none">expand_more</a>
-            </span>
+            </div>
         </section>
 
         <!-- About Section -->
-        <section class="h-screen px-6 max-w-4xl mx-auto flex items-center" id="about-section">
+        <section class="h-screen min-h-screen px-6 max-w-4xl mx-auto flex items-center" id="about-section">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8">
                 <!-- Left Side: Description -->
-                <div class="flex-1 text-center md:text-left">
-                    <h2 class="text-3xl font-bold mb-4">About Me</h2>
-                    <p class="text-[#888888]">
-                        Hello perple wandering to my portfolio! i'm Khai Xuen Tang, 4th year Software Design in AI for
+                <div class="flex-1 text-center md:text-justify">
+                    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+                    <p class="text-[#E0E0E0] dark:text-[#121212] mb-6">
+                        Hello perple wandering to my portfolio! I'm Khai Xuen Tang, 4th year Software Design in AI for
                         Cloud student@TUS.
                         I'm a huge fan of creating visionary software solution that blend efficiency with user-centric
                         design.
@@ -119,7 +121,7 @@
                         gaming. <br /><br />
                         Interested in me? Feel free to check out my resume below!
                     </p>
-                    <a href="/assets/KhaiXuenTang.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href="./assets/KhaiXuenTang.pdf" target="_blank" rel="noopener noreferrer">
                         <button
                             class="mt-4 px-4 py-2 bg-[#E0E0E0] dark:bg-[#121212] dark:text-[#E0E0E0] text-[#121212] rounded-full cursor-pointer transition-transform hover:scale-105">
                             View My Resume
@@ -130,14 +132,14 @@
                 <!-- Right Side: Rounded Border Box -->
                 <div class="flex-1 border-2 border-[#E0E0E0] dark:border-[#121212] rounded-xl p-5">
                     <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
-                        alt="Profile Picture" class="w-full h-full rounded-xl">
+                        alt="Profile Picture" class="w-full h-[50vh] md:h-[70vh] rounded-xl object-cover">
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section
-            class="h-auto mx-8 min-[820px]:mx-12 min-[930px]:mx-8 miin-[1083]:mx-14 min-[1078px]:mx-17 min-[1140px]:mx-25 min-[1190px]:mx-35 min-[1240px]:mx-40 min-[1290px]:mx-50 min-[1340px]:mx-60">
+            class="mx-8 my-60 min-[820px]:mx-12 min-[930px]:mx-8 miin-[1083]:mx-14 min-[1078px]:mx-17 min-[1140px]:mx-25 min-[1190px]:mx-35 min-[1240px]:mx-40 min-[1290px]:mx-50 min-[1340px]:mx-60">
             <h2 id="project-title" class="text-4xl font-semibold text-center">Projects</h2>
 
             <!-- Filter Buttons -->
@@ -149,7 +151,8 @@
         </section>
 
         <!-- Skills (Spider Graph) Section -->
-        <section id="skills-section" class="text-center my-60">
+        <section id="skills-section"
+            class="h-screen min-h-screen text-center flex flex-col justify-center items-center">
             <h2 class="text-4xl font-semibold">Skills</h2>
             <p class="text-sm">Click the arrow button to explore my skills!</p>
 
@@ -161,19 +164,23 @@
             <div class="mt-8 flex flex-col items-center">
                 <!-- Controls at bottom right -->
                 <div class="flex">
-                    <span id="previous-skill" class="material-icons cursor-pointer select-none"
-                        style="font-size:40px;">arrow_back</span>
+                    <p id="previous-skill" class="material-icons cursor-pointer select-none max-h-[40px]"
+                        style="font-size:40px; height: 40px;">arrow_back</p>
                     <div id="skill-svg-wrap" class="w-full max-w-2xl">
                         <!-- SVG will be injected here -->
                     </div>
-                    <span id="next-skill" class="material-icons cursor-pointer select-none"
-                        style="font-size:40px;">arrow_forward</span>
+                    <p id="next-skill" class="material-icons cursor-pointer select-none max-h-[40px]"
+                        style="font-size:40px; height: 40px;">arrow_forward</p>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact-section" class="h-screen text-center flex justify-center items-center text-white">
+        <section id="contact-section"
+            class="h-screen min-h-screen text-center flex flex-col justify-between items-center text-[#E0E0E0] dark:text-[#121212]">
+            <!-- a little trick to align the content at the middle / bottom part -->
+            <div></div>
+
             <div>
                 <h2 class="text-4xl font-semibold text-[#E0E0E0] dark:text-[#121212]">Get in Touch</h2>
                 <p class="mt-4 text-[#E0E0E0] dark:text-[#121212]">Drop by and say hello!</p>
@@ -196,10 +203,10 @@
                     <a id="gmail-btn" href="#" class="cursor-pointer">
                         <span class="material-icons text-xl w-6 h-6 dark:text-[#121212]">mail</span>
                     </a>
-
-
                 </div>
             </div>
+
+            <div class="wave w-full bg-[#E0E0E0] dark:bg-[#121212]"></div>
         </section>
     </main>
 
