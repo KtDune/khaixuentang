@@ -164,10 +164,15 @@
 }
 
 /* Vertical responsive */
-@media (max-height: 500px) {
+@media (max-height: 604px) {
 
     #sidebar {
         justify-content: center;
+        gap: 4vh;
+    }
+
+    #sidebar span {
+        gap: 4vh;
     }
 
     #sidebar span a .material-icons {

@@ -165,12 +165,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Open modal on click
   groupBox.addEventListener('click', () => {
     groupModal.showModal();
-    overlay.classList.remove("hidden");
+    if (sidebar.classList.contains('max-sm:-translate-x-full')) {
+      overlay.classList.remove("hidden");
+    }
   });
 
   // Close modal on button click
   closeModalBtn.addEventListener('click', () => {
     groupModal.close();
-    overlay.classList.add("hidden");
+    if (sidebar.classList.contains('max-sm:-translate-x-full')) {
+      overlay.classList.add("hidden");
+    }
   });
 })
