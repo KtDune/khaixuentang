@@ -2,7 +2,7 @@
 const projects = [
     {
         title: "Blogging Website",
-        img: "project1.png",
+        img: "./assets/beautybird.png",
         desc: "A blogging website that allows users to post, edit, and remove blog posts.",
         fullDesc: "This blogging platform is built using Node.js, Express, and MongoDB. It allows user authentication, post creation, editing, and deletion, with full markdown support and image uploads. This blogging platform is built using Node.js, Express, and MongoDB. It allows user authentication, post creation, editing, and deletion, with full markdown support and image uploads. This blogging platform is built using Node.js, Express, and MongoDB. It allows user authentication, post creation, editing, and deletion, with full markdown support and image uploads. This blogging platform is built using Node.js, Express, and MongoDB. It allows user authentication, post creation, editing, and deletion, with full markdown support and image uploads.",
         tags: ["Fullstack"]

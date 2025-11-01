@@ -1,5 +1,5 @@
 const texts = [
-  "4th Year student@TUS Athlone",
+  "4th Year Student@TUS",
   "Software Developer",
   "Aspiring Graphic Engineer",
   "Tech Enthusiast",
@@ -176,5 +176,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sidebar.classList.contains('max-sm:-translate-x-full')) {
       overlay.classList.add("hidden");
     }
+  });
+
+  const playBtn = document.getElementById("play-video");
+  const playBtnSm = document.getElementById("play-video-sm");
+  const videoContainer = document.getElementById("video-container");
+  const video = document.getElementById("intro-video");
+  const closeBtn = document.getElementById("close-video");
+
+  // Show and play the video
+  playBtn.addEventListener("click", () => {
+    videoContainer.classList.remove("hidden");
+    videoContainer.classList.add("opacity-100");
+    videoContainer.classList.remove("opacity-0");
+  });
+
+  playBtnSm.addEventListener("click", () => {
+    videoContainer.classList.remove("hidden");
+    videoContainer.classList.add("opacity-100");
+    videoContainer.classList.remove("opacity-0");
+  });
+
+  // Close the video
+  closeBtn.addEventListener("click", () => {
+    video.pause();
+    video.currentTime = 0; // Reset to start
+    videoContainer.classList.remove("opacity-100");
+    videoContainer.classList.add("opacity-0");
+    videoContainer.classList.add("hidden");
   });
 })

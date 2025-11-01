@@ -4,27 +4,28 @@ let startIndex = 0
 // --- Skill data: edit this to match your real skills ---
 const SKILL_CATEGORIES = {
     "Frontend": [
-        { name: "React", icon: "⚛️" },
-        { name: "Vue", icon: "🟢" },
-        { name: "Tailwind", icon: "🌊" },
-        { name: "HTML", icon: "📄" },
-        { name: "CSS", icon: "🎨" },
+        {
+            name: "React", icon: '<img src="./assets/React Icon.png" />' },
+        { name: "Vue", icon: '<img src="./assets/Vue.js Icon.png" />' },
+        { name: "Tailwind", icon: '<img src="./assets/Tailwind CSS Icon.png" />' },
+        { name: "HTML", icon: '<img src="./assets/HTML5 Icon.png" />' },
+        { name: "CSS", icon: '<img src="./assets/CSS3 Icon.png" />' },
     ],
     "Backend": [
-        { name: "Express", icon: "🚏" },
-        { name: "MySQL", icon: "🐘" },
-        { name: "MongoDB", icon: "🐘" },
+        { name: "Express", icon: '<img src="./assets/Express Icon.png" class="invert dark:invert-0" />' },
+        { name: "MySQL", icon: '<img src="./assets/MYSQL Icon.png" />' },
+        { name: "MongoDB", icon: '<img src="./assets/MongoDB Icon.png" />' },
     ],
     "DevTools": [
-        { name: "Git", icon: "🔧" },
+        { name: "Git", icon: '<img src="./assets/Git Icon.png" />' },
     ],
     "Cloud": [
-        { name: "Firebase", icon: "☕" },
+        { name: "Firebase", icon: '<img src="./assets/Firebase Icon.png" />' },
     ],
-    "Labguages": [
-        { name: "Javascript", icon: "☕" },
-        { name: "Java", icon: "☕" },
-        { name: "Python", icon: "☕" },
+    "Languages": [
+        { name: "Javascript", icon: '<img src="./assets/JavaScript Icon.png" />' },
+        { name: "Java", icon: '<img src="./assets/Java Icon.png" />' },
+        { name: "Python", icon: '<img src="./assets/Python Icon.png" />' },
     ]
 };
 
@@ -37,7 +38,6 @@ function createButton(text, active = false) {
         'dark:bg-[#E0E0E0]',
         'text-[#E0E0E0]',
         'dark:text-[#121212]',
-        'block',
         active ? 'text-4xl' : 'text-sm',
     ].join(' ');
 
@@ -46,12 +46,12 @@ function createButton(text, active = false) {
 }
 
 function drawSpider(categoryName, skills) {
-  const container = document.getElementById('skill-svg-wrap');
-  container.innerHTML = '';
+    const container = document.getElementById('skill-svg-wrap');
+    container.innerHTML = '';
 
-  // Grid wrapper
-  const gridWrap = document.createElement('div');
-  gridWrap.className = `
+    // Grid wrapper
+    const gridWrap = document.createElement('div');
+    gridWrap.className = `
     grid 
     grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 
     gap-6 sm:gap-4 
@@ -59,28 +59,28 @@ function drawSpider(categoryName, skills) {
     justify-items-center /* centers each card inside its grid cell */
   `;
 
-  skills.forEach(skill => {
-    const card = document.createElement('div');
-    card.className = `
+    skills.forEach(skill => {
+        const card = document.createElement('div');
+        card.className = `
       flex flex-col items-center justify-center 
       p-4 bg-[#121212] dark:bg-[#E0E0E0] rounded-lg 
       w-24 md:w-36
     `;
 
-    const icon = document.createElement('div');
-    icon.textContent = skill.icon;
-    icon.className = "text-4xl mb-2";
+        const icon = document.createElement('div');
+        icon.innerHTML = skill.icon;
+        icon.className = "w-12 h-12 mb-2";
 
-    const name = document.createElement('span');
-    name.textContent = skill.name;
-    name.className = "text-lg text-[#E0E0E0] dark:text-[#121212] text-center";
+        const name = document.createElement('span');
+        name.textContent = skill.name;
+        name.className = "text-lg text-[#E0E0E0] dark:text-[#121212] text-center";
 
-    card.appendChild(icon);
-    card.appendChild(name);
-    gridWrap.appendChild(card);
-  });
+        card.appendChild(icon);
+        card.appendChild(name);
+        gridWrap.appendChild(card);
+    });
 
-  container.appendChild(gridWrap);
+    container.appendChild(gridWrap);
 }
 
 // Why button for labels? Because it should be clickable but now iI dont need it anymore.
