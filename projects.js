@@ -15,7 +15,7 @@ const projects = [
       </ul><br />
 
       <p>This blogging website was created by following 
-      <a href="https://www.youtube.com/watch?v=J7BGuuuvDDk&list=PLqm86YkewF6QbR7QwqYWcAbl70Zhv0JUE" target="_blank">this tutorial</a>, 
+      <a class="underline" href="https://www.youtube.com/watch?v=J7BGuuuvDDk&list=PLqm86YkewF6QbR7QwqYWcAbl70Zhv0JUE" target="_blank">this tutorial</a>, 
       but I modified and improved many parts of it to enhance the user experience and add more features.</p><br />
 
       <p>Added features include:</p>
