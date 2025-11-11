@@ -46,7 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('overlay');
 
   document.getElementById('scroll-to-next').addEventListener('click', function () {
-    document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
+    const skillsSection = document.getElementById('about-section');
+    const rect = skillsSection.getBoundingClientRect();
+    const scrollY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
+    window.scrollTo({ top: scrollY, behavior: 'smooth' });
+    if (!overlay.classList.contains("hidden")) {
+      overlay.classList.toggle("hidden");
+    }
+    if (!sidebar.classList.contains("max-sm:-translate-x-full")) {
+      sidebar.classList.toggle("max-sm:-translate-x-full");
+    }
   });
 
   document.querySelector('aside a[href="#project-title"]').addEventListener('click', function (e) {
@@ -133,31 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.toggle("hidden");
   });
 
-  window.addEventListener('resize', () => {
-    // sm breakpoint in Tailwind
-    if (window.innerWidth >= 640) {
-
-      // Execute while sidebar is visible
-      if (!sidebar.classList.contains('max-sm:-translate-x-full')) {
-        sidebar.classList.add('max-sm:-translate-x-full');
-
-        if (sidebar.classList.contains('max-sm:duration-300')) {
-          sidebar.classList.remove('max-sm:duration-300');
-        }
-      } else {
-        if (sidebar.classList.contains('max-sm:duration-300')) {
-          sidebar.classList.remove('max-sm:duration-300');
-        }
-      }
-
-      if (!overlay.classList.contains('hidden')) {
-        overlay.classList.add('hidden');
-      }
-    }
-
-
-  });
-
   const groupBox = document.getElementById('groupBox');
   const groupModal = document.getElementById('groupModal');
   const closeModalBtn = document.getElementById('closeModal');
@@ -179,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const playBtn = document.getElementById("play-video");
-  const playBtnSm = document.getElementById("play-video-sm");
   const videoContainer = document.getElementById("video-container");
   const video = document.getElementById("intro-video");
   const closeBtn = document.getElementById("close-video");
@@ -189,12 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     videoContainer.classList.remove("hidden");
     videoContainer.classList.add("opacity-100");
     videoContainer.classList.remove("opacity-0");
-  });
-
-  playBtnSm.addEventListener("click", () => {
-    videoContainer.classList.remove("hidden");
-    videoContainer.classList.add("opacity-100");
-    videoContainer.classList.remove("opacity-0");
+    burgerBtn.classList.add('hidden')
   });
 
   // Close the video
@@ -204,5 +182,35 @@ document.addEventListener('DOMContentLoaded', () => {
     videoContainer.classList.remove("opacity-100");
     videoContainer.classList.add("opacity-0");
     videoContainer.classList.add("hidden");
+    burgerBtn.classList.remove('hidden')
   });
+
+  window.addEventListener('resize', () => {
+
+    const projectModel = document.getElementById('project-modal');
+
+    // sm breakpoint in Tailwind
+    if (window.innerWidth >= 640) {
+
+      // Execute while sidebar is visible
+      if (!sidebar.classList.contains('max-sm:-translate-x-full')) {
+        sidebar.classList.add('max-sm:-translate-x-full');
+
+        if (sidebar.classList.contains('max-sm:duration-300')) {
+          sidebar.classList.remove('max-sm:duration-300');
+        }
+      } else {
+        if (sidebar.classList.contains('max-sm:duration-300')) {
+          sidebar.classList.remove('max-sm:duration-300');
+        }
+      }
+
+      // Close the model when projectModel and groupModal is closed but overlay is not closed.
+      if (!overlay.classList.contains('hidden') && !projectModel.open && !groupModal.open) {
+        overlay.classList.add('hidden');
+      }
+    }
+
+  });
+
 })

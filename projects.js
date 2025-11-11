@@ -4,38 +4,95 @@ const projects = [
         title: "Blogging Website",
         img: "./assets/beautybird.png",
         desc: "A blogging website that allows users to post, edit, and remove blog posts.",
-        fullDesc: "This blogging platform is built using Node.js, Express, and MongoDB. It allows user authentication, post creation, editing, and deletion, with full markdown support and image uploads. This blogging platform is built using Node.js, Express, and MongoDB. It allows user authentication, post creation, editing, and deletion, with full markdown support and image uploads. This blogging platform is built using Node.js, Express, and MongoDB. It allows user authentication, post creation, editing, and deletion, with full markdown support and image uploads. This blogging platform is built using Node.js, Express, and MongoDB. It allows user authentication, post creation, editing, and deletion, with full markdown support and image uploads.",
+        fullDesc: `
+      <p>This project focuses on creating a blogging website that provides a customized experience for users to share their life and thoughts.</p><br />
+
+      <p>Built using React for the frontend and Node.js with Express for the backend, it features:</p>
+      <ul class="list-disc list-outside pl-5">
+        <li>User authentication</li>
+        <li>CRUD operations for blog posts and comments</li>
+        <li>Responsive design for various devices</li>
+      </ul><br />
+
+      <p>This blogging website was created by following 
+      <a href="https://www.youtube.com/watch?v=J7BGuuuvDDk&list=PLqm86YkewF6QbR7QwqYWcAbl70Zhv0JUE" target="_blank">this tutorial</a>, 
+      but I modified and improved many parts of it to enhance the user experience and add more features.</p><br />
+
+      <p>Added features include:</p>
+      <ul class="list-disc list-outside pl-5">
+        <li>Improved security measures: input validation and sanitization on the frontend, strict type checking on the backend.</li>
+        <li>Refactored components for better usability and maintainability.</li>
+        <li>Enhanced the comment section with nested replies and likes.</li>
+        <li>Added a weather widget using the OpenWeather API to display current weather information based on the user’s location.</li>
+      </ul>
+    `,
         tags: ["Fullstack"]
     },
     {
         title: "Knowledge Consolidation App",
-        img: "project1.png",
+        img: "./assets/knowledge-consolidation.png",
         desc: "An app to help users consolidate and organize their knowledge effectively.",
-        fullDesc: "This app provides flashcards, spaced repetition, and note organization to help students retain information better. Built using Vue.js and Firebase.",
+        fullDesc: `
+      <p>This project is built on top of the Feynman note-taking technique and aims to help users consolidate and organize their knowledge effectively using AI.</p><br />
+
+      <p>Developed with React for the frontend and Node.js with Express for the backend, it integrates IBM Watsonx AI to intelligently summarize user-selected notes.</p><br />
+
+      <p>Notable features include:</p>
+      <ul class="list-disc list-outside pl-5">
+        <li>Allow users to select multiple notes for AI-powered consolidation.</li>
+        <li>Dynamic addition and removal of notes.</li>
+        <li>Responsive interface for seamless navigation and retrieval of information.</li>
+      </ul><br />
+
+      <p>This app was developed during the IBM Watsonx Hackathon 2024.</p>
+    `,
         tags: ["Fullstack"]
     },
     {
         title: "AI Chat Application",
-        img: "project1.png",
+        img: "./assets/ai-chat-app.png",
         desc: "An AI-powered chat application that provides intelligent responses to user queries.",
-        fullDesc: "This chat app integrates the OpenAI API to generate dynamic, context-aware replies. It includes message persistence, theme switching, and responsive design.",
+        fullDesc: `
+      <p>This AI Chat Application leverages large language models (LLMs) to provide intelligent, conversational responses to user queries.</p><br />
+
+      <p>Built in Android Studio using Java, it enables users to send input to the Groq API and receive real-time AI-generated responses.</p>
+    `,
         tags: ["App"]
     },
     {
         title: "Bangboo Showcase Website",
-        img: "project1.png",
+        img: "./assets/bangboo.png",
         desc: "A showcase website for Bangboo, mascot character in Zenless Zone Zero.",
-        fullDesc: "Built using Next.js and TailwindCSS, this site highlights Bangboo’s art gallery, personality, and related content, providing smooth animation and responsive layout.",
+        fullDesc: `
+      <p>This project showcases different types of Bangboo, a mascot character in the game Zenless Zone Zero by HoYoverse.</p><br />
+
+      <p>The website is built using jQuery and Bootstrap for the frontend, with PHP and MySQL on the backend.</p><br />
+
+      <p>Key features include:</p>
+      <ul class="list-disc list-outside pl-5">
+        <li>Integration of <code>datatables.js</code> for displaying Bangboo types in a sortable and searchable table format.</li>
+        <li>CRUD operations for easy management of Bangboo data.</li>
+      </ul>
+    `,
         tags: ["Fullstack"]
     },
     {
         title: "Spam Email Classifier",
-        img: "project1.png",
+        img: "./assets/spam-email-classifier.png",
         desc: "A machine learning model that classifies emails as spam or not spam.",
-        fullDesc: "The spam classifier uses scikit-learn Decision Trees trained on labeled datasets. It visualizes classification results and allows user input for testing.",
+        fullDesc: `
+      <p>This project focuses on building a spam email classifier using a Decision Tree model.</p><br />
+
+      <p>Using the UCI ML Spam Email dataset, I performed data mining to uncover valuable insights about the data. For example, I visualized feature correlations using Matplotlib.</p><br />
+
+      <p>After preprocessing the data, I trained a Decision Tree model to classify emails as spam or not spam. The model was further enhanced through cross-validation.</p><br />
+
+      <p>In the end, it achieved an accuracy score of over <strong>91%</strong> on the test set.</p>
+    `,
         tags: ["Machine Learning"]
     },
 ];
+
 
 // Get unique tags
 const uniqueTags = Array.from(new Set(projects.flatMap(p => p.tags)));
@@ -102,9 +159,10 @@ function createProjects(filterTag = "All", page = 1) {
     function attachModalEvents() {
         const modal = document.getElementById("project-modal");
         const modalImg = document.getElementById("modal-img");
-        overlay = document.getElementById("overlay");
+        const overlay = document.getElementById("overlay");
         const modalTitle = document.getElementById("modal-title");
         const modalDesc = document.getElementById("modal-desc");
+        const burgerBtn = document.getElementById('menu-toggle');
 
         document.querySelectorAll('[data-title]').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -115,11 +173,13 @@ function createProjects(filterTag = "All", page = 1) {
                 if (project) {
                     modalImg.src = project.img;
                     modalTitle.textContent = project.title;
-                    modalDesc.textContent = project.fullDesc;
+                    modalDesc.innerHTML = project.fullDesc;
                     modal.showModal();
 
                     overlay.classList.remove("hidden");
                 }
+
+                burgerBtn.classList.add('hidden')
             });
 
             const closeBtn = document.getElementById('closeBtn');
@@ -127,6 +187,7 @@ function createProjects(filterTag = "All", page = 1) {
             closeBtn.addEventListener('click', () => {
                 modal.close();
                 overlay.classList.add("hidden");
+                burgerBtn.classList.remove('hidden')
             });
         });
     }
