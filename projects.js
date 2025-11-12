@@ -1,11 +1,13 @@
 // 1. Project data with tags
 const projects = [
     {
-        title: "Blogging Website",
+        title: "Fullstack Blogging Website",
         img: "./assets/beautybird.png",
-        desc: "A blogging website that allows users to post, edit, and remove blog posts.",
+        desc: "Sharing my thoughts makes me happu, so thats why I choose to build a blogging website. Featuring multiple ways to interact with others, I am not just building a blogging website, but a space for people to share their thoughts and react to others as well.",
         fullDesc: `
-      <p>This project focuses on creating a blogging website that provides a customized experience for users to share their life and thoughts.</p><br />
+      <p>
+      A well designed blogging website can make people wants to share more, so thats what I did. During my summer holiday, I have built a dynamic 
+      </p><br />
 
       <p>Built using React for the frontend and Node.js with Express for the backend, it features:</p>
       <ul class="list-disc list-outside pl-5">
@@ -26,12 +28,13 @@ const projects = [
         <li>Added a weather widget using the OpenWeather API to display current weather information based on the user’s location.</li>
       </ul>
     `,
-        tags: ["Fullstack"]
+        tags: ["Fullstack"],
+        techStack: ['React', 'Express', 'Firebase', 'MongoDB', 'Tailwind']
     },
     {
         title: "Knowledge Consolidation App",
         img: "./assets/knowledge-consolidation.png",
-        desc: "An app to help users consolidate and organize their knowledge effectively.",
+        desc: "How to structure my knowledge? Is there a way to manage my knowledge effectively? To find out the answer, I built this app on top of how I really manage my physical notes. and leveraging AI abilities to quickly summarize.",
         fullDesc: `
       <p>This project is built on top of the Feynman note-taking technique and aims to help users consolidate and organize their knowledge effectively using AI.</p><br />
 
@@ -46,23 +49,25 @@ const projects = [
 
       <p>This app was developed during the IBM Watsonx Hackathon 2024.</p>
     `,
-        tags: ["Fullstack"]
+        tags: ["Fullstack"],
+        techStack: ['React', 'Express', 'Tailwind', 'Groq']
     },
     {
         title: "AI Chat Application",
         img: "./assets/ai-chat-app.png",
-        desc: "An AI-powered chat application that provides intelligent responses to user queries.",
+        desc: "Imagine combining mobile phone's accessbility and AI's random dad joke: this is what this application is. A mobile app that knows you, and are always trying to say some jokes to make you laugh. Your laughter is its greatest reward.",
         fullDesc: `
       <p>This AI Chat Application leverages large language models (LLMs) to provide intelligent, conversational responses to user queries.</p><br />
 
       <p>Built in Android Studio using Java, it enables users to send input to the Groq API and receive real-time AI-generated responses.</p>
     `,
-        tags: ["App"]
+        tags: ["App"],
+        techStack: ['Java']
     },
     {
         title: "Bangboo Showcase Website",
         img: "./assets/bangboo.png",
-        desc: "A showcase website for Bangboo, mascot character in Zenless Zone Zero.",
+        desc: "I like Bangboo, and I hope there is a website to store all bangboos and their details. Bangboo showcase website makes managing bangboo's information much easier.",
         fullDesc: `
       <p>This project showcases different types of Bangboo, a mascot character in the game Zenless Zone Zero by HoYoverse.</p><br />
 
@@ -74,12 +79,13 @@ const projects = [
         <li>CRUD operations for easy management of Bangboo data.</li>
       </ul>
     `,
-        tags: ["Fullstack"]
+        tags: ["Fullstack"],
+        techStack: ['PHP', 'MySQL', 'jQuery']
     },
     {
         title: "Spam Email Classifier",
         img: "./assets/spam-email-classifier.png",
-        desc: "A machine learning model that classifies emails as spam or not spam.",
+        desc: "Corporates receive thousands of email every day, so finding which one os spam email would be very challenging. Not only it might put receiver's in potential danger, handling them is also a waste of resources. With this motive, I created this spam email classifier hoping to solve this problem.",
         fullDesc: `
       <p>This project focuses on building a spam email classifier using a Decision Tree model.</p><br />
 
@@ -89,7 +95,8 @@ const projects = [
 
       <p>In the end, it achieved an accuracy score of over <strong>91%</strong> on the test set.</p>
     `,
-        tags: ["Machine Learning"]
+        tags: ["Machine Learning"],
+        techStack: ['Python', 'Pandas', 'Scikit-learn']
     },
 ];
 
@@ -136,7 +143,7 @@ function createProjects(filterTag = "All", page = 1) {
         card.className = "rounded-xl overflow-hidden bg-[#333333] dark:bg-[#E0E0E0] dark:shadow-2xl m-4";
 
         // Add tag badge
-        const tagsHTML = project.tags
+        const tagsHTML = project.techStack
             .map(
                 tag =>
                     `<span class="bg-[#888888] dark:bg-[#444444] text-[#E0E0E0] text-xs px-2 py-1 rounded-full">${tag}</span>`
@@ -175,6 +182,7 @@ function createProjects(filterTag = "All", page = 1) {
                     modalTitle.textContent = project.title;
                     modalDesc.innerHTML = project.fullDesc;
                     modal.showModal();
+                    modal.scrollTop = 0
 
                     overlay.classList.remove("hidden");
                 }

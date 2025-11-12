@@ -5,7 +5,8 @@ let startIndex = 0
 const SKILL_CATEGORIES = {
     "Frontend": [
         {
-            name: "React", icon: '<img src="./assets/React Icon.png" />' },
+            name: "React", icon: '<img src="./assets/React Icon.png" />'
+        },
         { name: "Vue", icon: '<img src="./assets/Vue.js Icon.png" />' },
         { name: "Tailwind", icon: '<img src="./assets/Tailwind CSS Icon.png" />' },
         { name: "HTML", icon: '<img src="./assets/HTML5 Icon.png" />' },
@@ -13,7 +14,7 @@ const SKILL_CATEGORIES = {
     ],
     "Backend": [
         { name: "Express", icon: '<img src="./assets/Express Icon.png" class="invert dark:invert-0" />' },
-        { name: "MySQL", icon: '<img src="./assets/MYSQL Icon.png" />' },
+        { name: "MySQL", icon: '<img src="./assets/MySQL Icon.png" />' },
         { name: "MongoDB", icon: '<img src="./assets/MongoDB Icon.png" />' },
     ],
     "DevTools": [
@@ -26,6 +27,7 @@ const SKILL_CATEGORIES = {
         { name: "Javascript", icon: '<img src="./assets/JavaScript Icon.png" />' },
         { name: "Java", icon: '<img src="./assets/Java Icon.png" />' },
         { name: "Python", icon: '<img src="./assets/Python Icon.png" />' },
+        { name: "PHP", icon: '<img src="./assets/PHP.png" />' },
     ]
 };
 
@@ -89,62 +91,10 @@ function makeAllButtons() {
     return names.map((name, idx) => {
         const btn = createButton(name, idx === 0);
 
+        btn
+
         return btn;
     });
-}
-
-function render(buttons) {
-    const controls = document.getElementById('skill-controls');
-    controls.innerHTML = '';
-
-    buttons.forEach(btn => {
-
-        btn.classList.remove('text-4xl')
-        btn.classList.add('text-sm')
-
-    })
-
-    const visible = [
-        buttons[(startIndex - 1 + buttons.length) % buttons.length],
-        buttons[startIndex % buttons.length],
-        buttons[(startIndex + 1) % buttons.length]
-    ];
-
-    // Change the style of the 2nd button to have text-4xl
-    visible[1].classList.remove('text-sm')
-    visible[1].classList.add('text-4xl')
-
-
-    visible.forEach(btn => controls.appendChild(btn));
-}
-
-function addSwipeListener(el, onSwipeLeft, onSwipeRight) {
-    let startX = 0;
-    let startY = 0;
-
-    function touchStart(e) {
-        const touch = e.changedTouches[0];
-        startX = touch.screenX;
-        startY = touch.screenY;
-    }
-
-    function touchEnd(e) {
-        const touch = e.changedTouches[0];
-        let dx = touch.screenX - startX;
-        let dy = touch.screenY - startY;
-
-        // only detect horizontal swipe (ignore vertical)
-        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
-            if (dx > 0) {
-                onSwipeRight();
-            } else {
-                onSwipeLeft();
-            }
-        }
-    }
-
-    // return handlers so we can remove them later
-    return { touchStart, touchEnd };
 }
 
 
@@ -163,6 +113,50 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCategoryByIndex(index) {
         // redraw spider
         drawSpider(names[index], SKILL_CATEGORIES[names[index]]);
+    }
+
+    function render(buttons) {
+        const controls = document.getElementById('skill-controls');
+        controls.innerHTML = '';
+
+        buttons.forEach(btn => {
+            btn.classList.remove('text-4xl');
+            btn.classList.add('text-sm');
+        });
+
+        const visible = [
+            buttons[(startIndex - 1 + buttons.length) % buttons.length],
+            buttons[startIndex % buttons.length],
+            buttons[(startIndex + 1) % buttons.length]
+        ];
+
+        // Make center button large
+        visible[1].classList.remove('text-sm');
+        visible[1].classList.add('text-4xl');
+
+        // Clone elements to remove old event listeners
+        const leftBtn = visible[0].cloneNode(true);
+        const rightBtn = visible[2].cloneNode(true);
+
+        // Add new event listeners
+        leftBtn.addEventListener('click', () => {
+            startIndex = (startIndex - 1 + buttons.length) % buttons.length;
+            render(buttons);
+            updateCategoryByIndex(startIndex);
+            selectedSkillCategoryEl = document.querySelector('#skill-controls .text-4xl');
+        });
+
+        rightBtn.addEventListener('click', () => {
+            startIndex = (startIndex + 1 + buttons.length) % buttons.length;
+            render(buttons);
+            updateCategoryByIndex(startIndex);
+            selectedSkillCategoryEl = document.querySelector('#skill-controls .text-4xl');
+        });
+
+        // Append in correct order
+        controls.appendChild(leftBtn);
+        controls.appendChild(visible[1]); // center stays as-is
+        controls.appendChild(rightBtn);
     }
 
     // Previous button
