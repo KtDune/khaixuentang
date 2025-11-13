@@ -28,6 +28,12 @@ const SKILL_CATEGORIES = {
         { name: "Java", icon: '<img src="./assets/Java Icon.png" />' },
         { name: "Python", icon: '<img src="./assets/Python Icon.png" />' },
         { name: "PHP", icon: '<img src="./assets/PHP.png" />' },
+    ],
+    "AI / ML": [
+        { name: "Pandas", icon: '<img src="./assets/Pandas.png" class="bg-[#E0E0E0]" />' },
+        { name: "Scikit-Learn", icon: '<img src="./assets/scikit-learn.png" />' },
+        { name: "Matplotlib", icon: '<img src="./assets/Matplotlib.png" />' },
+        { name: "Numpy", icon: '<img src="./assets/Numpy.png" />' }
     ]
 };
 

@@ -62,7 +62,7 @@ const projects = [
       <p>Built in Android Studio using Java, it enables users to send input to the Groq API and receive real-time AI-generated responses.</p>
     `,
         tags: ["App"],
-        techStack: ['Java']
+        techStack: ['Java', 'Android']
     },
     {
         title: "Bangboo Showcase Website",
