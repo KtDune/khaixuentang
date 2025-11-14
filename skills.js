@@ -33,7 +33,7 @@ const SKILL_CATEGORIES = {
         { name: "Pandas", icon: '<img src="./assets/Pandas.png" class="bg-[#E0E0E0]" />' },
         { name: "Scikit-Learn", icon: '<img src="./assets/scikit-learn.png" />' },
         { name: "Matplotlib", icon: '<img src="./assets/Matplotlib.png" />' },
-        { name: "Numpy", icon: '<img src="./assets/Numpy.png" />' }
+        { name: "Numpy", icon: '<img src="./assets/NumPy.png" />' }
     ]
 };
 
